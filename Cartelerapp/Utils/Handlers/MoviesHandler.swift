@@ -24,17 +24,32 @@ struct MovieParams: Encodable {
 
 class MoviesHandler {
 
-  private let baseURL = "https://api.themoviedb.org/3/"
+  private var baseURL: String {
+    guard let filePath = Bundle.main.path(forResource: "Handler-Info", ofType: "plist") else {
+      fatalError("Couldn't find file 'Handler-Info.plist'.")
+    }
+
+    let plist = NSDictionary(contentsOfFile: filePath)
+    guard let value = plist?.object(forKey: "BASE_URL") as? String else {
+      fatalError("Couldn't find key 'API_KEY' in 'Handler-Info.plist'.")
+    }
+
+    if value.starts(with: "_") {
+      fatalError("Set an API key")
+    }
+
+    return value
+  }
   private let nowPlayingURL = "movie/now_playing"
 
   private var apiKey: String {
-    guard let filePath = Bundle.main.path(forResource: "API_keys", ofType: "plist") else {
-      fatalError("Couldn't find file 'API_keys.plist'.")
+    guard let filePath = Bundle.main.path(forResource: "Handler-Info", ofType: "plist") else {
+      fatalError("Couldn't find file 'Handler-Info.plist'.")
     }
 
     let plist = NSDictionary(contentsOfFile: filePath)
     guard let value = plist?.object(forKey: "API_KEY") as? String else {
-      fatalError("Couldn't find key 'API_KEY' in 'API_keys.plist'.")
+      fatalError("Couldn't find key 'API_KEY' in 'Handler-Info.plist'.")
     }
 
     if value.starts(with: "_") {
@@ -50,9 +65,6 @@ class MoviesHandler {
 
     let url = baseURL + nowPlayingURL
 
-    print("URL -> \(url)")
-    print("Params -> \(params)")
-    
     let request = AF.request(url, parameters: params)
     let response = await request.serializingDecodable(MovieModel.self).response
     switch response.result {

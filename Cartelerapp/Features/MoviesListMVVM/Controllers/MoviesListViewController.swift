@@ -25,6 +25,8 @@ class MoviesListViewController: UIViewController {
     tableView.dataSource = self
     tableView.delegate = self
 
+    tableView.separatorStyle = .none
+
     let nibs = viewModel.getNibs()
     for nib in nibs {
       tableView.register(nib.0, forCellReuseIdentifier: nib.1)
@@ -56,6 +58,8 @@ extension MoviesListViewController: UITableViewDataSource {
 
     if let movieCell = cell as? MovieCell, let data = item.movieData {
       movieCell.bind(data: data)
+      movieCell.tag = indexPath.row
+      movieCell.delegate = self
       return movieCell
     }
 
@@ -79,5 +83,11 @@ extension MoviesListViewController: UITableViewDelegate {
     detailVC.movieInfo = info.movieData
 
     self.navigationController?.pushViewController(detailVC, animated: true)
+  }
+}
+
+extension MoviesListViewController: MovieCellDelegate {
+  func toggleFavorite(id: Int, tag: Int) {
+    print("favorite \(id), tag \(tag)")
   }
 }
