@@ -14,6 +14,7 @@
 		2C3FFB192949B28900BFEBE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C3FFB182949B28900BFEBE1 /* Assets.xcassets */; };
 		2C3FFB1C2949B28900BFEBE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C3FFB1A2949B28900BFEBE1 /* LaunchScreen.storyboard */; };
 		2C3FFB3A2949B6E800BFEBE1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C3FFB3C2949B6E800BFEBE1 /* Localizable.strings */; };
+		BBA2FFFA72F8C91ACDD932E4 /* Pods_Cartelerapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40B00F4EF212C9F28E80ABB /* Pods_Cartelerapp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,9 @@
 		2C3FFB1D2949B28900BFEBE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C3FFB3B2949B6E800BFEBE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C3FFB3D2949B6FE00BFEBE1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		342A50943B663310E2885192 /* Pods-Cartelerapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cartelerapp.debug.xcconfig"; path = "Target Support Files/Pods-Cartelerapp/Pods-Cartelerapp.debug.xcconfig"; sourceTree = "<group>"; };
+		70F5B7636A8141BD1A4384BB /* Pods-Cartelerapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cartelerapp.release.xcconfig"; path = "Target Support Files/Pods-Cartelerapp/Pods-Cartelerapp.release.xcconfig"; sourceTree = "<group>"; };
+		A40B00F4EF212C9F28E80ABB /* Pods_Cartelerapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cartelerapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBA2FFFA72F8C91ACDD932E4 /* Pods_Cartelerapp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +50,8 @@
 			children = (
 				2C3FFB0E2949B28600BFEBE1 /* Cartelerapp */,
 				2C3FFB0D2949B28600BFEBE1 /* Products */,
+				2F7688657CAF03E417E49898 /* Pods */,
+				BB1C71A27D6DB85EE5037DA3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -223,6 +230,23 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		2F7688657CAF03E417E49898 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				342A50943B663310E2885192 /* Pods-Cartelerapp.debug.xcconfig */,
+				70F5B7636A8141BD1A4384BB /* Pods-Cartelerapp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BB1C71A27D6DB85EE5037DA3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A40B00F4EF212C9F28E80ABB /* Pods_Cartelerapp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -230,9 +254,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C3FFB202949B28900BFEBE1 /* Build configuration list for PBXNativeTarget "Cartelerapp" */;
 			buildPhases = (
+				491C0CD25725BE846D02D983 /* [CP] Check Pods Manifest.lock */,
 				2C3FFB082949B28600BFEBE1 /* Sources */,
 				2C3FFB092949B28600BFEBE1 /* Frameworks */,
 				2C3FFB0A2949B28600BFEBE1 /* Resources */,
+				2C2F43C92949B99F00C47A9C /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -290,6 +316,49 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C2F43C92949B99F00C47A9C /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		491C0CD25725BE846D02D983 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cartelerapp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2C3FFB082949B28600BFEBE1 /* Sources */ = {
@@ -451,6 +520,7 @@
 		};
 		2C3FFB212949B28900BFEBE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 342A50943B663310E2885192 /* Pods-Cartelerapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -479,6 +549,7 @@
 		};
 		2C3FFB222949B28900BFEBE1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70F5B7636A8141BD1A4384BB /* Pods-Cartelerapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

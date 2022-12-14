@@ -1,0 +1,6 @@
+framework module Pods_Cartelerapp {
+  umbrella header "Pods-Cartelerapp-umbrella.h"
+
+  export *
+  module * { export * }
+}
