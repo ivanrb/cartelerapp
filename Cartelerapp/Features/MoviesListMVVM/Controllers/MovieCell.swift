@@ -32,13 +32,13 @@ class MovieCell: UITableViewCell {
 
   private func configureUI() {
     selectionStyle = .none
-    
+
     cellContentView.layer.cornerRadius = 5
-    
+
     favoriteButton.setTitle("", for: .normal)
     favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
     favoriteButton.tintColor = .white
-    
+
     movieImage.roundCorners(corners: [.topLeft, .bottomLeft],
                             radius: 5)
     cellContentView.backgroundColor = Theme.cellColor

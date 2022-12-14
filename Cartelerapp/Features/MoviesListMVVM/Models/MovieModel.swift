@@ -9,13 +9,14 @@ import Foundation
 
 // MARK: - MovieModel
 struct MovieModel: Codable {
-  let dates: Dates
+//  let dates: Dates
   let page: Int
   let results: [MovieData]
   let totalPages, totalResults: Int
 
   enum CodingKeys: String, CodingKey {
-    case dates, page, results
+//    case dates
+    case page, results
     case totalPages = "total_pages"
     case totalResults = "total_results"
   }

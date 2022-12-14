@@ -17,8 +17,32 @@ class MoviesListViewController: UIViewController {
     super.viewDidLoad()
 
     configureTable()
-
+    cancelSearch()
     fetchData()
+  }
+
+  @objc private func showSearch() {
+    let searchBar = UISearchBar()
+    searchBar.delegate = self
+    searchBar.sizeToFit()
+    searchBar.becomeFirstResponder()
+
+    parent?.navigationItem.titleView = searchBar
+
+    parent?.navigationItem.leftBarButtonItem = nil
+    parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel",
+                                                                style: .done,
+                                                                target: self,
+                                                                action: #selector(cancelSearch))
+  }
+
+  @objc private func cancelSearch() {
+    parent?.navigationItem.titleView = nil
+    parent?.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"),
+                                                               style: .done,
+                                                               target: self,
+                                                               action: #selector(showSearch))
+    parent?.navigationItem.rightBarButtonItem = nil
   }
 
   private func configureTable() {
@@ -37,6 +61,18 @@ class MoviesListViewController: UIViewController {
     Task {
       do {
         try await viewModel.fetch()
+        tableView.reloadData()
+      } catch {
+        print(error.localizedDescription)
+      }
+    }
+  }
+
+  func fetchSearch(query: String) {
+    Task {
+      do {
+        viewModel.resetList()
+        try await viewModel.fetchSearch(query: query)
         tableView.reloadData()
       } catch {
         print(error.localizedDescription)
@@ -84,10 +120,20 @@ extension MoviesListViewController: UITableViewDelegate {
 
     self.navigationController?.pushViewController(detailVC, animated: true)
   }
+
 }
 
 extension MoviesListViewController: MovieCellDelegate {
   func toggleFavorite(id: Int, tag: Int) {
     print("favorite \(id), tag \(tag)")
+  }
+}
+
+extension MoviesListViewController: UISearchBarDelegate {
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    print(searchText)
+    if searchText.count >= 3 {
+      fetchSearch(query: searchText)
+    }
   }
 }

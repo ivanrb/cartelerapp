@@ -13,55 +13,48 @@ struct MovieParams: Encodable {
   let api_key: String
   let page: Int
 
-  init(apiKey: String, page: Int) {
+  init(page: Int) {
     let localeId = Locale.current.identifier
     region = String(localeId.dropLast(3))
     language = localeId
-    api_key = apiKey
+    api_key =  Utils.getValueFromPList(name: "Handler-Info", key: "API_KEY")
     self.page = page
   }
 }
 
+struct SearchMovieParams: Encodable {
+  let region: String
+  let language: String
+  let api_key: String
+  let page: Int
+  let query: String
+
+  init(page: Int, query: String) {
+    let localeId = Locale.current.identifier
+    region = String(localeId.dropLast(3))
+    language = localeId
+    api_key =  Utils.getValueFromPList(name: "Handler-Info", key: "API_KEY")
+    self.page = page
+    self.query = query
+  }
+}
+
+struct MovieDetailParams: Encodable {
+  let language: String = Locale.current.identifier
+  let api_key: String = Utils.getValueFromPList(name: "Handler-Info", key: "API_KEY")
+}
+
 class MoviesHandler {
 
-  private var baseURL: String {
-    guard let filePath = Bundle.main.path(forResource: "Handler-Info", ofType: "plist") else {
-      fatalError("Couldn't find file 'Handler-Info.plist'.")
-    }
+  private var baseURL = Utils.getValueFromPList(name: "Handler-Info", key: "BASE_URL")
 
-    let plist = NSDictionary(contentsOfFile: filePath)
-    guard let value = plist?.object(forKey: "BASE_URL") as? String else {
-      fatalError("Couldn't find key 'API_KEY' in 'Handler-Info.plist'.")
-    }
-
-    if value.starts(with: "_") {
-      fatalError("Set an API key")
-    }
-
-    return value
-  }
   private let nowPlayingURL = "movie/now_playing"
-
-  private var apiKey: String {
-    guard let filePath = Bundle.main.path(forResource: "Handler-Info", ofType: "plist") else {
-      fatalError("Couldn't find file 'Handler-Info.plist'.")
-    }
-
-    let plist = NSDictionary(contentsOfFile: filePath)
-    guard let value = plist?.object(forKey: "API_KEY") as? String else {
-      fatalError("Couldn't find key 'API_KEY' in 'Handler-Info.plist'.")
-    }
-
-    if value.starts(with: "_") {
-      fatalError("Set an API key")
-    }
-
-    return value
-  }
+  private let movieDetailURL = "movie"
+  private let movieSearchURL = "search/movie"
 
   func getMovies(page: Int) async throws -> MovieModel {
 
-    let params = MovieParams(apiKey: apiKey, page: page)
+    let params = MovieParams(page: page)
 
     let url = baseURL + nowPlayingURL
 
@@ -74,5 +67,37 @@ class MoviesHandler {
       throw error
     }
   }
+
+  func searchMovie(page: Int, query: String) async throws -> MovieModel {
+    let params = SearchMovieParams(page: page, query: query)
+
+    let url = baseURL + movieSearchURL
+
+    let request = AF.request(url, parameters: params)
+    let response = await request.serializingDecodable(MovieModel.self).response
+    switch response.result {
+    case .success(let movies):
+      return movies
+    case .failure(let error):
+      throw error
+    }
+  }
+
+  /*
+  func getMovieDetailFor(id: Int) async throws -> MovieData {
+
+    let params = MovieDetailParams()
+
+    let url = baseURL + movieDetailURL + String(id)
+
+    let request = AF.request(url, parameters: params)
+    let response = await request.serializingDecodable(MovieModel.self).response
+    switch response.result {
+    case .success(let movies):
+      return movies
+    case .failure(let error):
+      throw error
+    }
+  }*/
 
 }

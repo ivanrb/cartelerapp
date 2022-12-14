@@ -65,6 +65,12 @@ class MoviesListViewModel {
   func getCellFor(row: Int) -> MovieListItem {
     return moviesList[row]
   }
+
+  func resetList() {
+    currentPage = 1
+    canLoadMore = true
+    moviesList.removeAll()
+  }
 }
 
 extension MoviesListViewModel {
@@ -76,6 +82,31 @@ extension MoviesListViewModel {
     let moviesHandler = MoviesHandler()
     do {
       let result = try await moviesHandler.getMovies(page: currentPage)
+      if !moviesList.isEmpty {
+        moviesList = moviesList.dropLast(1)
+      }
+
+      setMovies(movies: result.results)
+
+      currentPage = result.page + 1
+      canLoadMore = result.page != result.totalPages
+
+      if canLoadMore {
+        moviesList.append(MovieListItem(loadMore: true))
+      }
+    } catch {
+      throw error
+    }
+  }
+
+  func fetchSearch(query: String) async throws {
+    if !canLoadMore {
+      return
+    }
+
+    let moviesHandler = MoviesHandler()
+    do {
+      let result = try await moviesHandler.searchMovie(page: currentPage, query: query)
       if !moviesList.isEmpty {
         moviesList = moviesList.dropLast(1)
       }
