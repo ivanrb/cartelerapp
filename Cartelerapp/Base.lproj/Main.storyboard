@@ -22,10 +22,10 @@
             </objects>
             <point key="canvasLocation" x="-1526" y="-108"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Main View Controller-->
         <scene sceneID="uW2-7m-VGH">
             <objects>
-                <tabBarController id="H5G-g3-aRg" sceneMemberID="viewController">
+                <tabBarController id="H5G-g3-aRg" customClass="TabMainViewController" customModule="Cartelerapp" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="mDT-v5-XPT"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="y0W-dR-kSK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>

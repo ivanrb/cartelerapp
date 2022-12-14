@@ -7,11 +7,14 @@
 
 import UIKit
 
-class TabMainViewController: UIViewController {
+class TabMainViewController: UITabBarController {
+
+  private let viewModel = TabMainViewModel()
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
+
+    self.viewControllers = viewModel.getControllers()
   }
 
 }
