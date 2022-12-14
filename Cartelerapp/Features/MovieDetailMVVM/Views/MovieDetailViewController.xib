@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailViewController" customModule="Cartelerapp" customModuleProvider="target">
             <connections>
+                <outlet property="titleLabel" destination="HRY-va-XcW" id="GgR-G3-xGG"/>
                 <outlet property="view" destination="iN0-l3-epB" id="r5t-7m-4Lc"/>
             </connections>
         </placeholder>
@@ -24,11 +25,19 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRY-va-XcW">
+                    <rect key="frame" x="180" y="465" width="33" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="HRY-va-XcW" firstAttribute="top" secondItem="7qn-iQ-nJW" secondAttribute="bottom" constant="16" id="0sV-HV-nRS"/>
                 <constraint firstItem="7qn-iQ-nJW" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="9ss-E9-4lf"/>
+                <constraint firstItem="HRY-va-XcW" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="SlF-fI-j2x"/>
                 <constraint firstItem="7qn-iQ-nJW" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="rYK-MY-AYn"/>
             </constraints>
             <point key="canvasLocation" x="131" y="-12"/>

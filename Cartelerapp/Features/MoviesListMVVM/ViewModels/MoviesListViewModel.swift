@@ -39,6 +39,8 @@ struct MovieListItem {
     cellID = MovieListCell.loadMore.id
     movieData = nil
   }
+
+  var isLoadMoreCell: Bool { return cellID == MovieListCell.loadMore.id }
 }
 
 class MoviesListViewModel {
@@ -46,6 +48,7 @@ class MoviesListViewModel {
   private var moviesList: [MovieListItem] = []
   private var error: MovieError?
   private var currentPage = 1
+  private var canLoadMore = true
 
   func getNibs() -> [UINib: String] {
     let movieCellNib = UINib(nibName: MovieListCell.movie.nib, bundle: nil)
@@ -66,10 +69,25 @@ class MoviesListViewModel {
 
 extension MoviesListViewModel {
   func fetch() async throws {
+    if !canLoadMore {
+      return
+    }
+
     let moviesHandler = MoviesHandler()
     do {
       let result = try await moviesHandler.getMovies(page: currentPage)
+      if !moviesList.isEmpty {
+        moviesList = moviesList.dropLast(1)
+      }
+
       setMovies(movies: result.results)
+
+      currentPage = result.page + 1
+      canLoadMore = result.page != result.totalPages
+
+      if canLoadMore {
+        moviesList.append(MovieListItem(loadMore: true))
+      }
     } catch {
       throw error
     }

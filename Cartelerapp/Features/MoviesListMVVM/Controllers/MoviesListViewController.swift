@@ -23,6 +23,7 @@ class MoviesListViewController: UIViewController {
 
   private func configureTable() {
     tableView.dataSource = self
+    tableView.delegate = self
 
     let nibs = viewModel.getNibs()
     for nib in nibs {
@@ -59,5 +60,24 @@ extension MoviesListViewController: UITableViewDataSource {
     }
 
     return cell
+  }
+}
+
+extension MoviesListViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    let cell = viewModel.getCellFor(row: indexPath.row)
+
+    if cell.isLoadMoreCell {
+      fetchData()
+    }
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let info = viewModel.getCellFor(row: indexPath.row)
+
+    let detailVC = MovieDetailViewController()
+    detailVC.movieInfo = info.movieData
+
+    self.navigationController?.pushViewController(detailVC, animated: true)
   }
 }

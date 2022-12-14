@@ -50,6 +50,9 @@ class MoviesHandler {
 
     let url = baseURL + nowPlayingURL
 
+    print("URL -> \(url)")
+    print("Params -> \(params)")
+    
     let request = AF.request(url, parameters: params)
     let response = await request.serializingDecodable(MovieModel.self).response
     switch response.result {
