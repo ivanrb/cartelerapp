@@ -22,8 +22,19 @@
 		2C3FFB3A2949B6E800BFEBE1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C3FFB3C2949B6E800BFEBE1 /* Localizable.strings */; };
 		2C881E9C2949C433005D3480 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C881E9B2949C433005D3480 /* MovieDetailViewController.swift */; };
 		2C881E9E2949C44F005D3480 /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C881E9D2949C44F005D3480 /* MovieDetailViewController.xib */; };
+		2C881EAD2949D90F005D3480 /* TabMainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C881EAC2949D90F005D3480 /* TabMainTests.swift */; };
 		BBA2FFFA72F8C91ACDD932E4 /* Pods_Cartelerapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A40B00F4EF212C9F28E80ABB /* Pods_Cartelerapp.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2C881EA72949D8A2005D3480 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C3FFB042949B28600BFEBE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C3FFB0B2949B28600BFEBE1;
+			remoteInfo = Cartelerapp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2C2F43CA2949BDE900C47A9C /* TabMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMainViewModel.swift; sourceTree = "<group>"; };
@@ -44,6 +55,8 @@
 		2C3FFB3D2949B6FE00BFEBE1 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C881E9B2949C433005D3480 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		2C881E9D2949C44F005D3480 /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
+		2C881EA32949D8A2005D3480 /* CartelerappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartelerappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C881EAC2949D90F005D3480 /* TabMainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMainTests.swift; sourceTree = "<group>"; };
 		342A50943B663310E2885192 /* Pods-Cartelerapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cartelerapp.debug.xcconfig"; path = "Target Support Files/Pods-Cartelerapp/Pods-Cartelerapp.debug.xcconfig"; sourceTree = "<group>"; };
 		70F5B7636A8141BD1A4384BB /* Pods-Cartelerapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cartelerapp.release.xcconfig"; path = "Target Support Files/Pods-Cartelerapp/Pods-Cartelerapp.release.xcconfig"; sourceTree = "<group>"; };
 		A40B00F4EF212C9F28E80ABB /* Pods_Cartelerapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cartelerapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +68,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBA2FFFA72F8C91ACDD932E4 /* Pods_Cartelerapp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C881EA02949D8A2005D3480 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				2C3FFB0E2949B28600BFEBE1 /* Cartelerapp */,
+				2C881EA42949D8A2005D3480 /* CartelerappTests */,
 				2C3FFB0D2949B28600BFEBE1 /* Products */,
 				2F7688657CAF03E417E49898 /* Pods */,
 				BB1C71A27D6DB85EE5037DA3 /* Frameworks */,
@@ -83,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				2C3FFB0C2949B28600BFEBE1 /* Cartelerapp.app */,
+				2C881EA32949D8A2005D3480 /* CartelerappTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -270,6 +292,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		2C881EA42949D8A2005D3480 /* CartelerappTests */ = {
+			isa = PBXGroup;
+			children = (
+				2C881EAC2949D90F005D3480 /* TabMainTests.swift */,
+			);
+			path = CartelerappTests;
+			sourceTree = "<group>";
+		};
 		2F7688657CAF03E417E49898 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +339,24 @@
 			productReference = 2C3FFB0C2949B28600BFEBE1 /* Cartelerapp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2C881EA22949D8A2005D3480 /* CartelerappTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C881EA92949D8A2005D3480 /* Build configuration list for PBXNativeTarget "CartelerappTests" */;
+			buildPhases = (
+				2C881E9F2949D8A2005D3480 /* Sources */,
+				2C881EA02949D8A2005D3480 /* Frameworks */,
+				2C881EA12949D8A2005D3480 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C881EA82949D8A2005D3480 /* PBXTargetDependency */,
+			);
+			name = CartelerappTests;
+			productName = CartelerappTests;
+			productReference = 2C881EA32949D8A2005D3480 /* CartelerappTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -321,6 +369,10 @@
 				TargetAttributes = {
 					2C3FFB0B2949B28600BFEBE1 = {
 						CreatedOnToolsVersion = 14.1;
+					};
+					2C881EA22949D8A2005D3480 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 2C3FFB0B2949B28600BFEBE1;
 					};
 				};
 			};
@@ -339,6 +391,7 @@
 			projectRoot = "";
 			targets = (
 				2C3FFB0B2949B28600BFEBE1 /* Cartelerapp */,
+				2C881EA22949D8A2005D3480 /* CartelerappTests */,
 			);
 		};
 /* End PBXProject section */
@@ -355,6 +408,13 @@
 				2C3FFB192949B28900BFEBE1 /* Assets.xcassets in Resources */,
 				2C2F43D42949BF6F00C47A9C /* FavoriteMoviesViewController.xib in Resources */,
 				2C3FFB172949B28600BFEBE1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C881EA12949D8A2005D3480 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,7 +479,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2C881E9F2949D8A2005D3480 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C881EAD2949D90F005D3480 /* TabMainTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2C881EA82949D8A2005D3480 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C3FFB0B2949B28600BFEBE1 /* Cartelerapp */;
+			targetProxy = 2C881EA72949D8A2005D3480 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2C3FFB152949B28600BFEBE1 /* Main.storyboard */ = {
@@ -624,6 +700,50 @@
 			};
 			name = Release;
 		};
+		2C881EAA2949D8A2005D3480 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = K4258H2UL8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivanrb.CartelerappTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cartelerapp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cartelerapp";
+			};
+			name = Debug;
+		};
+		2C881EAB2949D8A2005D3480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = K4258H2UL8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivanrb.CartelerappTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cartelerapp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cartelerapp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -641,6 +761,15 @@
 			buildConfigurations = (
 				2C3FFB212949B28900BFEBE1 /* Debug */,
 				2C3FFB222949B28900BFEBE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C881EA92949D8A2005D3480 /* Build configuration list for PBXNativeTarget "CartelerappTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C881EAA2949D8A2005D3480 /* Debug */,
+				2C881EAB2949D8A2005D3480 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

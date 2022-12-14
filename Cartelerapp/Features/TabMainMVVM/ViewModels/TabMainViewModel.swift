@@ -16,16 +16,20 @@ struct TabMainItem {
 
 class TabMainViewModel {
 
-  private let items: [TabMainItem] = [
-    TabMainItem(viewController: MoviesListViewController(),
-                title: "movies".localizable,
-                icon: UIImage(systemName: "popcorn"),
-               selectedIcon: UIImage(systemName: "popcorn.fill")),
-    TabMainItem(viewController: FavoriteMoviesViewController(),
-                title: "favorites".localizable,
-                icon: UIImage(systemName: "star"),
-               selectedIcon: UIImage(systemName: "star.fill"))
-  ]
+  private let items: [TabMainItem]
+
+  init() {
+    items = [
+      TabMainItem(viewController: MoviesListViewController(),
+                  title: "movies".localizable,
+                  icon: UIImage(systemName: "popcorn"),
+                  selectedIcon: UIImage(systemName: "popcorn.fill")),
+      TabMainItem(viewController: FavoriteMoviesViewController(),
+                  title: "favorites".localizable,
+                  icon: UIImage(systemName: "star"),
+                  selectedIcon: UIImage(systemName: "star.fill"))
+    ]
+  }
 
   func getControllers() -> [UIViewController] {
     var controllers: [UIViewController] = []
