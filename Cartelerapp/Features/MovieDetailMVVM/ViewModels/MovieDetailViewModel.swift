@@ -42,6 +42,13 @@ class MovieDetailViewModel {
     return movieModel.overview
   }
 
+  func getId() -> Int {
+    return movieInfo.id
+  }
+
+  func getMovieData() -> MovieData {
+    return movieInfo
+  }
 }
 
 extension MovieDetailViewModel {

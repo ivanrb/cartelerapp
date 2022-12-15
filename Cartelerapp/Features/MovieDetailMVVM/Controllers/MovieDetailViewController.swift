@@ -16,6 +16,8 @@ class MovieDetailViewController: UIViewController {
 
   private let viewModel: MovieDetailViewModel!
 
+  private let favoriteVM = FavoriteViewModel.shared
+
   init(viewModel: MovieDetailViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
@@ -51,6 +53,34 @@ class MovieDetailViewController: UIViewController {
     titleLabel.text = viewModel.getTitle()
 
     self.navigationController?.navigationBar.tintColor = .white
+
+    setFavoriteButton()
+  }
+
+  private func setFavoriteButton() {
+    let isFavorite = favoriteVM.checkIsInFavoriteList(id: viewModel.getId())
+
+    var imageName = "star"
+    if isFavorite {
+      imageName += ".fill"
+    }
+
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: imageName),
+                                                        style: .done,
+                                                        target: self,
+                                                        action: #selector(toggleFavorite))
+  }
+
+  @objc func toggleFavorite() {
+    let isFavorite = favoriteVM.checkIsInFavoriteList(id: viewModel.getId())
+
+    if isFavorite {
+      favoriteVM.removeFavorite(id: viewModel.getId())
+    } else {
+      favoriteVM.addFavorite(movie: viewModel.getMovieData())
+    }
+
+    setFavoriteButton()
   }
 
   private func setImage() {
