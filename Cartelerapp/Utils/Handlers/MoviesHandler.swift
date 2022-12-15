@@ -14,7 +14,7 @@ struct MovieParams: Encodable {
   let page: Int
 
   init(page: Int) {
-    let localeId = Locale.current.identifier
+    let localeId = Locale.current.identifier.replacingOccurrences(of: "_", with: "-")
     region = String(localeId.dropLast(3))
     language = localeId
     api_key =  Utils.getValueFromPList(name: "Handler-Info", key: "API_KEY")
@@ -30,7 +30,7 @@ struct SearchMovieParams: Encodable {
   let query: String
 
   init(page: Int, query: String) {
-    let localeId = Locale.current.identifier
+    let localeId = Locale.current.identifier.replacingOccurrences(of: "_", with: "-")
     region = String(localeId.dropLast(3))
     language = localeId
     api_key =  Utils.getValueFromPList(name: "Handler-Info", key: "API_KEY")
@@ -40,7 +40,7 @@ struct SearchMovieParams: Encodable {
 }
 
 struct MovieDetailParams: Encodable {
-  let language: String = Locale.current.identifier
+  let language: String = Locale.current.identifier.replacingOccurrences(of: "_", with: "-")
   let api_key: String = Utils.getValueFromPList(name: "Handler-Info", key: "API_KEY")
 }
 
@@ -49,7 +49,7 @@ class MoviesHandler {
   private var baseURL = Utils.getValueFromPList(name: "Handler-Info", key: "BASE_URL")
 
   private let nowPlayingURL = "movie/now_playing"
-  private let movieDetailURL = "movie"
+  private let movieDetailURL = "movie/"
   private let movieSearchURL = "search/movie"
 
   func getMovies(page: Int) async throws -> MovieModel {
@@ -83,21 +83,23 @@ class MoviesHandler {
     }
   }
 
-  /*
-  func getMovieDetailFor(id: Int) async throws -> MovieData {
+  func getMovieDetailFor(id: Int) async throws -> MovieDetail {
 
     let params = MovieDetailParams()
 
     let url = baseURL + movieDetailURL + String(id)
 
+    print(params)
+    print(url)
+
     let request = AF.request(url, parameters: params)
-    let response = await request.serializingDecodable(MovieModel.self).response
+    let response = await request.serializingDecodable(MovieDetail.self).response
     switch response.result {
-    case .success(let movies):
-      return movies
+    case .success(let movie):
+      return movie
     case .failure(let error):
       throw error
     }
-  }*/
+  }
 
 }

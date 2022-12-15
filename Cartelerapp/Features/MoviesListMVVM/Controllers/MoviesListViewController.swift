@@ -115,10 +115,12 @@ extension MoviesListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let info = viewModel.getCellFor(row: indexPath.row)
 
-    let detailVC = MovieDetailViewController()
-    detailVC.movieInfo = info.movieData
+    if let movieInfo = info.movieData {
+      let detailViewModel = MovieDetailViewModel(movieInfo: movieInfo)
+      let detailVC = MovieDetailViewController(viewModel: detailViewModel)
 
-    self.navigationController?.pushViewController(detailVC, animated: true)
+      self.navigationController?.pushViewController(detailVC, animated: true)
+    }
   }
 
 }
