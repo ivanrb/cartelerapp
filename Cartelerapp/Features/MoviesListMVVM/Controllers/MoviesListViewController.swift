@@ -127,7 +127,19 @@ extension MoviesListViewController: UITableViewDelegate {
 
 extension MoviesListViewController: MovieCellDelegate {
   func toggleFavorite(id: Int, tag: Int) {
-    print("favorite \(id), tag \(tag)")
+    let favoriteViewModel = FavoriteViewModel.shared
+
+    let movie = viewModel.getCellFor(row: tag)
+    if var data = movie.movieData {
+      let isFavorite = favoriteViewModel.checkIsInFavoriteList(id: data.id)
+      viewModel.updateCellFor(row: tag, with: data)
+      if isFavorite {
+        favoriteViewModel.removeFavorite(id: data.id)
+      } else {
+        favoriteViewModel.addFavorite(movie: data)
+      }
+    }
+    tableView.reloadRows(at: [IndexPath(row: tag, section: 0)], with: .none)
   }
 }
 

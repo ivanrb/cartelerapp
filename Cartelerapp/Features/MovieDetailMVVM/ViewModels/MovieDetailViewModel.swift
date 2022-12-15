@@ -22,8 +22,6 @@ class MovieDetailViewModel {
   }
 
   func getImagePath() -> String {
-    let imageHandler = ImageHandler()
-
     var imagePath = ""
     if let poster = movieInfo.posterPath {
       imagePath = poster

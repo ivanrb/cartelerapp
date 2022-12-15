@@ -66,6 +66,10 @@ class MoviesListViewModel {
     return moviesList[row]
   }
 
+  func updateCellFor(row: Int, with data: MovieData) {
+    moviesList[row] = MovieListItem(movie: data)
+  }
+
   func resetList() {
     currentPage = 1
     canLoadMore = true

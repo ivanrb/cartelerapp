@@ -73,6 +73,18 @@ class MovieCell: UITableViewCell {
 
     scoreView.backgroundColor = Theme.getScoreColor(score: data.voteAverage)
     scoreLabel.text = (data.voteAverage * 10).clean
+
+    let fvm = FavoriteViewModel.shared
+    let isFavorite = fvm.checkIsInFavoriteList(id: data.id)
+
+    favoriteButton.tintColor = isFavorite ? .yellow : .white
+
+    var imageName = "star"
+    if isFavorite {
+      imageName += ".fill"
+    }
+
+    favoriteButton.setImage(UIImage(systemName: imageName), for: .normal)
   }
 
   @IBAction func toggleFavorite(_ sender: Any) {

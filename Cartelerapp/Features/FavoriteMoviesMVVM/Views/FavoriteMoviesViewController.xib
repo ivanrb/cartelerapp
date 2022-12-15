@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavoriteMoviesViewController" customModule="Cartelerapp" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="6iv-yU-7Qz" id="xJn-2B-891"/>
                 <outlet property="view" destination="iN0-l3-epB" id="tAs-e5-M7r"/>
             </connections>
         </placeholder>
@@ -18,20 +19,20 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prs-n9-BTu">
-                    <rect key="frame" x="137.33333333333334" y="428" width="118.66666666666666" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6iv-yU-7Qz">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Prs-n9-BTu" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="4Sz-Yf-InX"/>
-                <constraint firstItem="Prs-n9-BTu" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="my1-w1-kxE"/>
+                <constraint firstItem="6iv-yU-7Qz" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Cfx-vM-Owb"/>
+                <constraint firstAttribute="bottom" secondItem="6iv-yU-7Qz" secondAttribute="bottom" id="JPw-YJ-V6x"/>
+                <constraint firstItem="6iv-yU-7Qz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WT4-wA-uOv"/>
+                <constraint firstItem="6iv-yU-7Qz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="w9F-gf-Qrq"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="-11"/>
+            <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
         </view>
     </objects>
     <resources>
