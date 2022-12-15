@@ -26,6 +26,7 @@ class FavoriteMoviesViewController: UIViewController {
 
   private func configureTable() {
     tableView.dataSource = self
+    tableView.delegate = self
 
     tableView.separatorStyle = .none
 
@@ -53,6 +54,17 @@ extension FavoriteMoviesViewController: UITableViewDataSource {
     }
 
     return UITableViewCell()
+  }
+}
+
+extension FavoriteMoviesViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let info = viewModel.getCellFor(row: indexPath.row)
+
+    let detailViewModel = MovieDetailViewModel(movieInfo: info)
+    let detailVC = MovieDetailViewController(viewModel: detailViewModel)
+
+    self.navigationController?.pushViewController(detailVC, animated: true)
   }
 }
 

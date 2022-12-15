@@ -130,7 +130,7 @@ extension MoviesListViewController: MovieCellDelegate {
     let favoriteViewModel = FavoriteViewModel.shared
 
     let movie = viewModel.getCellFor(row: tag)
-    if var data = movie.movieData {
+    if let data = movie.movieData {
       let isFavorite = favoriteViewModel.checkIsInFavoriteList(id: data.id)
       viewModel.updateCellFor(row: tag, with: data)
       if isFavorite {
