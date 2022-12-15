@@ -38,11 +38,11 @@ class MoviesListViewController: UIViewController {
 
   @objc private func cancelSearch() {
     parent?.navigationItem.titleView = nil
-    parent?.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"),
-                                                               style: .done,
-                                                               target: self,
-                                                               action: #selector(showSearch))
-    parent?.navigationItem.rightBarButtonItem = nil
+    parent?.navigationItem.leftBarButtonItem = nil
+    parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"),
+                                                                style: .done,
+                                                                target: self,
+                                                                action: #selector(showSearch))
   }
 
   private func configureTable() {
@@ -135,5 +135,9 @@ extension MoviesListViewController: UISearchBarDelegate {
     if searchText.count >= 3 {
       fetchSearch(query: searchText)
     }
+  }
+
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.resignFirstResponder()
   }
 }

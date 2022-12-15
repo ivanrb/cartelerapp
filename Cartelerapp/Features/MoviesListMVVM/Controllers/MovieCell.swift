@@ -35,6 +35,9 @@ class MovieCell: UITableViewCell {
 
     cellContentView.layer.cornerRadius = 5
 
+    titleLabel.textColor = .white
+    releaseLabel.textColor = .lightGray
+
     favoriteButton.setTitle("", for: .normal)
     favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
     favoriteButton.tintColor = .white
